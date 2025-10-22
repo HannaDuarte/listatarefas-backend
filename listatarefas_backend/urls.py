@@ -17,8 +17,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("<h2>API de Lista de Tarefas funcionando. Acesse o admin ou api. :) </h2>")
 
 urlpatterns = [
+    path('', home),  # 👈 essa linha faz aparecer o texto na raiz
     path('admin/', admin.site.urls),
     path('api/', include('tasks.urls')),
 ]
